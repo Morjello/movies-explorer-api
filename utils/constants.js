@@ -15,6 +15,7 @@ const constants = {
   INCORRECT_EMAIL_OR_PASSWORD: "Неправильные почта или пароль",
   INCORRECT_EMAIL_FORMAT: "Неверный формат почты",
   INCORRECT_LINK_FORMAT: "Неверный формат ссылки",
+  PAGE_NOT_FOUND: "Страница не найдена",
   OK: 200,
   AUTH_OK: 201,
 };

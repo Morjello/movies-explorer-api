@@ -39,6 +39,14 @@ const movieSchema = new mongoose.Schema({
       message: constants.INCORRECT_LINK_FORMAT,
     },
   },
+  nameRU: {
+    type: String,
+    required: true,
+  },
+  nameEN: {
+    type: String,
+    required: true,
+  },
   thumbnail: {
     type: String,
     required: true,
@@ -47,20 +55,12 @@ const movieSchema = new mongoose.Schema({
       message: constants.INCORRECT_LINK_FORMAT,
     },
   },
+  movieId: {
+    type: Number,
+    required: true,
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-  movieId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-  nameRU: {
-    type: String,
-    required: true,
-  },
-  nameEN: {
-    type: String,
     required: true,
   },
 });

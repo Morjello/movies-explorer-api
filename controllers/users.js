@@ -1,4 +1,4 @@
-const { config } = require("dotenv");
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -8,7 +8,7 @@ const NotFoundError = require("../errors/not-found-err");
 const ValidationError = require("../errors/validation-error");
 const ConflictError = require("../errors/conflict-error");
 
-const { NODE_ENV = config.NODE_ENV, JWT_SECRET = config.JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUser = async (req, res, next) => {
   try {
@@ -31,6 +31,9 @@ const updateUser = async (req, res, next) => {
     );
     res.status(constants.OK).send(user);
   } catch (err) {
+    if (err.code === 11000) {
+      return next(new ConflictError(constants.USER_EXIST));
+    }
     if (err.name === "ValidationError") {
       return next(
         new ValidationError(constants.INCORRECT_DATA_FOR_UPDATE_USER)

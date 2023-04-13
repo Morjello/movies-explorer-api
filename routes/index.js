@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { errors } = require("celebrate");
+const limiter = require("../middlewares/rateLimiter");
 const usersRoutes = require("./users");
 const moviesRoutes = require("./movies");
 const authRoutes = require("./auth");
@@ -11,6 +12,7 @@ const { constants } = require("../utils/constants");
 
 router.use(requestLogger);
 
+router.use(limiter);
 router.use("/", authRoutes);
 router.use(auth);
 router.use("/users", usersRoutes);

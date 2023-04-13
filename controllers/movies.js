@@ -24,9 +24,9 @@ const createMovie = async (req, res, next) => {
       description,
       image,
       trailerLink,
-      thumbnail,
       nameRU,
       nameEN,
+      thumbnail,
       movieId,
     } = req.body;
     const movie = await Movie.create({
@@ -37,11 +37,11 @@ const createMovie = async (req, res, next) => {
       description,
       image,
       trailerLink,
-      thumbnail,
-      owner,
-      movieId,
       nameRU,
       nameEN,
+      thumbnail,
+      movieId,
+      owner,
     });
     res.status(constants.OK).send(movie);
   } catch (err) {

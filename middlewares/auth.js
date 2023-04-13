@@ -1,10 +1,9 @@
-const { config } = require("dotenv");
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { constants } = require("../utils/constants");
 const AuthError = require("../errors/auth-error");
 
-const { NODE_ENV = config.NODE_ENV, JWT_SECRET = config.JWT_SECRET } =
-  process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;

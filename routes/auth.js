@@ -3,15 +3,15 @@ const { login, register } = require("../controllers/users");
 const { loginValidation, registerValidation } = require("../middlewares/celebrate");
 
 router.post(
-  "/signup",
+  "/signin",
   loginValidation,
-  register
+  login
 );
 
 router.post(
-  "/signin",
+  "/signup",
   registerValidation,
-  login
+  register
 );
 
 module.exports = router;

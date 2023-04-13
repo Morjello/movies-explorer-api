@@ -1,14 +1,14 @@
 const { celebrate, Joi } = require("celebrate");
 const { safeLink } = require("../utils/safe-link");
 
-const loginValidation = celebrate({
+const registerValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
 });
-const registerValidation = celebrate({
+const loginValidation = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
@@ -29,10 +29,10 @@ const movieCreateValidation = celebrate({
     description: Joi.string().required(),
     image: Joi.string().required().pattern(safeLink),
     trailerLink: Joi.string().required().pattern(safeLink),
-    thumbnail: Joi.string().required().pattern(safeLink),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
-    movieId: Joi.required(),
+    thumbnail: Joi.string().required().pattern(safeLink),
+    movieId: Joi.number().required(),
   }),
 });
 const movieDeleteValidation = celebrate({
@@ -42,9 +42,9 @@ const movieDeleteValidation = celebrate({
 });
 
 module.exports = {
-  loginValidation,
   registerValidation,
+  loginValidation,
   userUpdateValidation,
   movieCreateValidation,
-  movieDeleteValidation
+  movieDeleteValidation,
 };

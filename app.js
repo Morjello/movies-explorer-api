@@ -5,7 +5,7 @@ const helmet = require("helmet");
 const cors = require("./middlewares/cors");
 const router = require("./routes/index");
 
-const { PORT = "3000", DB_ADDRESS = "mongodb://127.0.0.1:27017/bitfilmsdb" } =
+const { PORT, DB_ADDRESS } =
   process.env;
 
 const app = express();
@@ -19,6 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors);
 app.use(helmet());
 
-app.use("/api", router);
+app.use(router);
 
 app.listen(PORT);

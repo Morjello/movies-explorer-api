@@ -13,10 +13,10 @@ const { constants } = require("../utils/constants");
 router.use(requestLogger);
 
 router.use(limiter);
-router.use("/", authRoutes);
+router.use("/api/", authRoutes);
 router.use(auth);
-router.use("/users", usersRoutes);
-router.use("/movies", moviesRoutes);
+router.use("/api/users", usersRoutes);
+router.use("/api/movies", moviesRoutes);
 router.use((req, res, next) => next(new NotFoundError(constants.PAGE_NOT_FOUND)));
 
 router.use(errorLogger);

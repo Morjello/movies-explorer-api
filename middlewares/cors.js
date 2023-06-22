@@ -1,7 +1,9 @@
 const allowedCors = [
   "http://localhost:3000",
+  "https://morjello.movies.nomoredom.nomoreparties.sbs",
+  "https://api.nomoreparties.co/beatfilm-movies",
 ];
-const cors = ((req, res, next) => {
+const cors = (req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
   const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
@@ -19,6 +21,6 @@ const cors = ((req, res, next) => {
 
   next();
   return null;
-});
+};
 
 module.exports = cors;

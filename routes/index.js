@@ -17,7 +17,9 @@ router.use("/api/", authRoutes);
 router.use(auth);
 router.use("/api/users", usersRoutes);
 router.use("/api/movies", moviesRoutes);
-router.use((req, res, next) => next(new NotFoundError(constants.PAGE_NOT_FOUND)));
+router.use((req, res, next) => {
+  next(new NotFoundError(constants.PAGE_NOT_FOUND));
+});
 
 router.use(errorLogger);
 router.use(errors());
